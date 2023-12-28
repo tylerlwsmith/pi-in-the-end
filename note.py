@@ -8,7 +8,7 @@ def to_number(note_string):
     accidental = note_string[1:]
 
     if base_note not in notes or accidental not in accidentals:
-        raise Exception(f'Note "{note_string}" is invalid!')
+        raise ValueError(f'Note "{note_string}" is invalid!')
 
     note_number = notes[base_note]
     adjustment = accidentals[accidental]

@@ -58,33 +58,33 @@ def test_lowercase_notes_should_raise_exception():
 
 
 def test_invalid_notes_should_raise_exception():
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         note.to_number("H")
 
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         note.to_number("I")
 
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         note.to_number("J")
 
 
 def test_uppercase_accidentals_should_raise_exception():
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         note.to_number("CBB")
 
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         note.to_number("CB")
 
 
 def test_invalid_accidentals_should_raise_exception():
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         note.to_number("Cbbb")
 
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         note.to_number("C###")
 
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         note.to_number("C+")
 
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         note.to_number("C-")
