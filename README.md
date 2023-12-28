@@ -21,3 +21,11 @@ Once activated, install the dependencies:
 ```sh
 pip3 install -r requirements.txt
 ```
+
+## Running tests
+
+After installing the project requirements in a virtual environment, use the following command to run the project's tests:
+
+```sh
+pytest
+```
