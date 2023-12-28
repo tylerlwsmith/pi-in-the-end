@@ -1,5 +1,5 @@
 import pytest
-import note
+from . import note
 
 
 def test_natural_notes_produce_correct_numbers():
