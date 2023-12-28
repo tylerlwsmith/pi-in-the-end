@@ -4,7 +4,7 @@ import pathlib
 import mido
 from playsound import playsound
 
-from note import to_number
+from note_util import to_number
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
 audio_file_path = current_directory + "/audio.mp3"
@@ -16,6 +16,8 @@ melody_note_names = (
 # fmt: on
 
 melody = [to_number(note) for note in melody_note_names]
+
+print(melody)
 
 entered_notes = []
 
