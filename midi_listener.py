@@ -1,21 +1,30 @@
 import mido
+from note import to_number
 
-notes_to_match = [3, 10, 10, 6, 5, 5, 5, 5, 6, 3, 10, 10, 6, 5]
+# fmt: off
+melody_note_names = (
+    ("Eb", "Bb", "Bb", "Gb", "F", "F", "F", "F", "Gb") +
+    ("Eb", "Bb", "Bb", "Gb", "F"))
+# fmt: on
+
+melody = [to_number(note) for note in melody_note_names]
+
 entered_notes = []
 
-inport = mido.open_input()
+input_port = mido.open_input()
 print("Listening for input...")
 
-for msg in inport:
+for msg in input_port:
     if msg.type == "note_on" and msg.velocity > 0:
         # Append, disregarding octaves. C is 0, C# is 1, etc.
         entered_notes.append(msg.note % 12)
 
         # Only keep around enough notes to see if it matches.
-        entered_notes = entered_notes[-len(notes_to_match):]
-        if (entered_notes == notes_to_match):
+        entered_notes.pop(0)
+
+        if entered_notes == melody:
             # Reset notes to prevent half matching weirdness.
-            entered_notes = []
+            entered_notes.clear()
             print("🎶 I tried so hard, and got so far 🎶")
 
 print("I am the end")
