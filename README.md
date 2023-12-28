@@ -29,3 +29,7 @@ After installing the project requirements in a virtual environment, use the foll
 ```sh
 pytest
 ```
+
+## Formatting
+
+This project uses [Black](https://black.readthedocs.io/en/stable/) for formatting.
