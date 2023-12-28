@@ -1,3 +1,6 @@
+# Since I'm testing every single valid permutation, I could have used
+# a dictionary to look up the note number instead of calculating it.
+
 notes = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
 accidentals = {"bb": -2, "b": -1, "": 0, "#": 1, "##": 2}
 octave = 12
