@@ -17,8 +17,6 @@ melody_note_names = (
 
 melody = [to_number(note) for note in melody_note_names]
 
-print(melody)
-
 entered_notes = []
 
 input_port = mido.open_input()
