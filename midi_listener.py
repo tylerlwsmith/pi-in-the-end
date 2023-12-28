@@ -6,8 +6,8 @@ from playsound import playsound
 
 from note import to_number
 
-current_script_directory = os.path.dirname(os.path.realpath(__file__))
-audio_file_path = current_script_directory + "/audio.mp3"
+current_directory = os.path.dirname(os.path.realpath(__file__))
+audio_file_path = current_directory + "/audio.mp3"
 
 # fmt: off
 melody_note_names = (
