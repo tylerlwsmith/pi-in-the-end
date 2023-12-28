@@ -20,7 +20,8 @@ for msg in input_port:
         entered_notes.append(msg.note % 12)
 
         # Only keep around enough notes to see if it matches.
-        entered_notes.pop(0)
+        while len(entered_notes) > len(melody):
+            entered_notes.pop(0)
 
         if entered_notes == melody:
             # Reset notes to prevent half matching weirdness.
