@@ -22,7 +22,7 @@ Once activated, install the dependencies:
 pip3 install -r requirements.txt
 ```
 
-## The audio playback file
+## Add the audio file
 
 The audio file is not provided as a part of this repository, so you'll need to provide your own. Save it into the main project directory as `audio.mp3`.
 
