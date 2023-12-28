@@ -1,6 +1,9 @@
 import pytest
 import note
 
+# Since I'm already testing every single valid permutation, I could have just
+# used a dictionary to look up the note number instead of calculating it.
+
 
 def test_natural_notes_produce_correct_numbers():
     assert note.to_number("C") == 0
