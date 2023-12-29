@@ -15,7 +15,6 @@ melody_note_names = (
 # fmt: on
 
 melody = [to_number(note) for note in melody_note_names]
-
 entered_notes = []
 
 audio_file = os.getenv("AUDIO_FILE") or "audio.mp3"
