@@ -13,7 +13,7 @@ python3 -m venv .venv
 Once the environment is created, activate it:
 
 ```sh
-source ./venv/bin/activate
+source .venv/bin/activate
 ```
 
 Once activated, install the dependencies:
