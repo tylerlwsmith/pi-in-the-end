@@ -75,6 +75,8 @@ AUDIO_INTERFACE="Scarlett 18i8 USB:Scarlett 18i8 USB MIDI 1 20:0"
 
 - There is no way to specify what audio interface plays the audio clip.
 - If the midi device is disconnected while the app is running, the application has no way of reconnecting when the device is plugged back in.
+- Multiple midi channels on the same interface will all be collapsed into a single stream of notes.
+- The current implementation only supports listening on one device.
 
 ## Running tests
 
