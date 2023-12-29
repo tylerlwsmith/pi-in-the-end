@@ -71,6 +71,10 @@ To manually select an audio interface, copy the full name of the audio interface
 AUDIO_INTERFACE="Scarlett 18i8 USB:Scarlett 18i8 USB MIDI 1 20:0"
 ```
 
+## Other possible issues
+
+This will only play audio through the system's default audio interface, and has no way of setting a secondary audio interface for playback.
+
 ## Running tests
 
 After installing the project requirements in a virtual environment, use the following command to run the project's tests:
