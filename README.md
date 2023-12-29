@@ -22,11 +22,54 @@ Once activated, install the dependencies:
 pip3 install -r requirements.txt
 ```
 
-## Add the audio file
+Next create a project `.env` file:
 
-The audio file is not provided as a part of this repository, so you'll need to provide your own. Save it into the main project directory as `audio.mp3`.
+```sh
+cp .example.env .env
+```
 
-If no audio file is provided, the process will print the first line of the chorus when the entered notes match the piano melody.
+## Set the audio file
+
+The audio file is not provided as a part of this repository, so you'll need to provide your own. Save the file into the main project directory, then set its value in `.env` using the `AUDIO_FILE` variable.
+
+## Set the midi interface
+
+The script may pick a different default midi interface than the one which was intended.
+
+If this script does not fire when the correct notes are played, try the following steps to ensure that the the application is listening to the correct midi interface.
+
+Activate the Python virtual environment if it is not already activated in your current terminal session:
+
+```sh
+source .venv/bin/activate
+```
+
+Once the virtual environment is activated, begin an interactive Python session:
+
+```sh
+python
+```
+
+In the interactive Python session, run the following commands:
+
+```python
+>>> import mido
+>>> mido.get_input_names()
+```
+
+These commands will return a list of audio interfaces such as the one below:
+
+```python
+# Example output:
+['Midi Through:Midi Through Port-0 14:0', 'Scarlett 18i8 USB:Scarlett 18i8 USB MIDI 1 20:0']
+```
+
+To manually select an audio interface, copy the full name of the audio interface and set the `AUDIO_INTERFACE` value to that string in `.env`:
+
+```sh
+# .env file
+AUDIO_INTERFACE="Scarlett 18i8 USB:Scarlett 18i8 USB MIDI 1 20:0"
+```
 
 ## Running tests
 
