@@ -28,10 +28,6 @@ Next create a project `.env` file:
 cp .example.env .env
 ```
 
-## Set the audio file
-
-The audio file is not provided as a part of this repository, so you'll need to provide your own. Save the file into the main project directory, then set its value in `.env` using the `AUDIO_FILE` variable.
-
 ## Set the midi interface
 
 The script may pick a different default midi interface than the one which was intended.
@@ -70,6 +66,10 @@ To manually select an audio interface, copy the full name of the audio interface
 # .env file
 AUDIO_INTERFACE="Scarlett 18i8 USB:Scarlett 18i8 USB MIDI 1 20:0"
 ```
+
+## Set the audio file
+
+The audio file is not provided as a part of this repository, so you'll need to provide your own. Save the file into the main project directory, then set its value in `.env` using the `AUDIO_FILE` variable.
 
 ## Limitations
 
