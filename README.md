@@ -53,8 +53,8 @@ python
 In the interactive Python session, run the following commands:
 
 ```python
->>> import mido
->>> mido.get_input_names()
+import mido
+mido.get_input_names()
 ```
 
 These commands will return a list of audio interfaces such as the one below:
