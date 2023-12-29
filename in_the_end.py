@@ -18,12 +18,12 @@ melody = [to_number(note) for note in melody_note_names]
 
 entered_notes = []
 
-audio_file = os.getenv("AUDIO_INTERFACE") or "audio.mp3"
+audio_file = os.getenv("AUDIO_FILE") or "audio.mp3"
 project_directory = os.path.dirname(os.path.realpath(__file__))
 audio_file_path = os.path.join(current_directory, "/audio.mp3")
 
 # A `None` value will select the default audio interface.
-audio_interface = os.getenv("AUDIO_FILE") or None
+audio_interface = os.getenv("AUDIO_INTERFACE") or None
 input_port = mido.open_input(audio_interface)
 print("Listening for input ...")
 
