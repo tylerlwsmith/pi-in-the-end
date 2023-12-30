@@ -119,7 +119,7 @@ sudo vi /etc/systemd/system/linkinpark.service
 
 Paste the following into the new `linkinpark.service` file, **replace `<username>` with the desired user**, and save and quit with `wq!`:
 
-```toml
+```ini
 [Unit]
 Description=Linkin Park MIDI Playback Service
 After=network.target
