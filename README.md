@@ -91,9 +91,10 @@ Next, install Git:
 sudo apt install git
 ```
 
-After that, clone the project:
+After that, run the following commands to clone the repo into the home directory:
 
 ```sh
+cd ~
 git clone git@github.com:tylerlwsmith/pi-in-the-end.git
 ```
 
