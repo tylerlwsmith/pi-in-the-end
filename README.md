@@ -98,7 +98,7 @@ cd ~
 git clone git@github.com:tylerlwsmith/pi-in-the-end.git
 ```
 
-If you are not using the default audio driver for output, follow [Jeff Geerling's instructions to set a different audio device](https://www.jeffgeerling.com/blog/2022/playing-sounds-python-on-raspberry-pi).
+**If you are not using the default audio driver for output, follow [Jeff Geerling's instructions to set a different audio device](https://www.jeffgeerling.com/blog/2022/playing-sounds-python-on-raspberry-pi).**
 
 To adjust the ouptut volume, grab the name of the device you'd like to change the volume of with the following command:
 
