@@ -111,10 +111,46 @@ It may return something like `Simple mixer control 'PCM',0`. You can target the 
 amixer set PCM 100% # 100% means full volume.
 ```
 
+Next create, a `systemd` unit file by running the following command:
+
+```sh
+sudo vi /etc/systemd/system/linkinpark.service
+```
+
+Paste the following into the new `linkinpark.service` file, **replace `<username>` with the desired user**, and save and quit with `wq!`:
+
+```toml
+[Unit]
+Description=Linkin Park MIDI Playback Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/<username>/pi-in-the-end
+User=<username>
+Restart=always
+ExecStart=/home/<username>/pi-in-the-end/.venv/bin/python /home/<username>/pi-in-the-end/in_the_end.py
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+Once created, run the following commands to activate the service:
+
+```sh
+sudo systemctl daemon-reload
+sudo systemctl enable linkinpark.service
+sudo systemctl start linkinpark.service
+sudo systemctl status linkinpark.service
+
+```
+
 ## Limitations
 
 - There is no way to specify what audio interface plays the audio clip.
 - If the midi device is disconnected while the app is running, the application has no way of reconnecting when the device is plugged back in.
+- If the midi device is disconnected when `systemd` starts the app, the service will go into a rapid boot loop.
 - Multiple midi channels on the same interface will all be collapsed into a single stream of notes.
 - The current implementation only supports listening on one device.
 - The Python `playsound` library requires an enormous number of dependencies on a headless Pi. It may be worth replacing with `pygame` as outlined in [Jeff Geerling's article](https://www.jeffgeerling.com/blog/2022/playing-sounds-python-on-raspberry-pi).
