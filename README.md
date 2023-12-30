@@ -105,7 +105,7 @@ To adjust the ouptut volume, grab the name of the device you'd like to change th
 amixer scontrols
 ```
 
-It may return something like `Simple mixer control 'PCM',0`. You can target the device name in single quotes to change the volume of the output with the following command:
+It may return something like `Simple mixer control 'PCM',0`. You can target the device name in single quotes to change the volume of the output with the following command (more info on [Stack Overflow](https://askubuntu.com/a/380764)):
 
 ```sh
 amixer set PCM 100% # 100% means full volume.
@@ -117,6 +117,7 @@ amixer set PCM 100% # 100% means full volume.
 - If the midi device is disconnected while the app is running, the application has no way of reconnecting when the device is plugged back in.
 - Multiple midi channels on the same interface will all be collapsed into a single stream of notes.
 - The current implementation only supports listening on one device.
+- The Python `playsound` library requires an enormous number of dependencies on a headless Pi. It may be worth replacing with `pygame` as outlined in [Jeff Geerling's article](https://www.jeffgeerling.com/blog/2022/playing-sounds-python-on-raspberry-pi).
 
 ## Running tests
 
