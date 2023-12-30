@@ -21,7 +21,6 @@ audio_file = os.getenv("AUDIO_FILE") or "placeholder.mp3"
 project_directory = os.path.dirname(os.path.realpath(__file__))
 audio_file_path = os.path.join(project_directory, audio_file)
 
-
 # A `None` value will select the default audio interface.
 audio_interface = os.getenv("AUDIO_INTERFACE") or None
 input_port = mido.open_input(audio_interface)
