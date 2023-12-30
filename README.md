@@ -71,6 +71,46 @@ AUDIO_INTERFACE="Scarlett 18i8 USB:Scarlett 18i8 USB MIDI 1 20:0"
 
 The audio file is not provided as a part of this repository, so you'll need to provide your own. Save the file into the main project directory, then set its value in `.env` using the `AUDIO_FILE` variable.
 
+## Deploy to Pi
+
+On the Pi, install the system-level dependencies for the [PyGObject](https://pygobject.readthedocs.io/en/latest/index.html) package:
+
+```sh
+sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-4.0
+```
+
+Then install the dependencies for [GStreamer](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c).
+
+```sh
+sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+```
+
+Next, install Git:
+
+```sh
+sudo apt install git
+```
+
+After that, clone the project:
+
+```sh
+git clone git@github.com:tylerlwsmith/pi-in-the-end.git
+```
+
+If you are not using the default audio driver for output, follow [Jeff Geerling's instructions to set a different audio device](https://www.jeffgeerling.com/blog/2022/playing-sounds-python-on-raspberry-pi).
+
+To adjust the ouptut volume, grab the name of the device you'd like to change the volume of with the following command:
+
+```sh
+amixer scontrols
+```
+
+It may return something like `Simple mixer control 'PCM',0`. You can target the device name in single quotes to change the volume of the output with the following command:
+
+```sh
+amixer set PCM 100% # 100% means full volume.
+```
+
 ## Limitations
 
 - There is no way to specify what audio interface plays the audio clip.
