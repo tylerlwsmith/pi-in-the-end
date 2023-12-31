@@ -1,6 +1,6 @@
-# "In the End" player for Raspberry Pi (WIP)
+# "In the End" player for Raspberry Pi
 
-This work-in-progress project will run on a Raspberry Pi and will play the chorus from "In the End" by Linkin Park when the song's intro is played on a connected MIDI device. You can see me demoing the script on [my Twitter](https://twitter.com/tylerlwsmith/status/1327802206020464640). The demo prints to the console, but the final project will play the chorus through connected speakers.
+This project will run on a Raspberry Pi and will play the chorus from "In the End" by Linkin Park (mp3 not included) when the song's intro is played on a connected MIDI device. You can see me demoing an early version of the script on [my Twitter](https://twitter.com/tylerlwsmith/status/1327802206020464640). The demo prints to the console, but this completed project plays the chorus through connected speakers.
 
 ## Installation
 
@@ -149,12 +149,19 @@ sudo systemctl status linkinpark.service
 
 ## Limitations
 
-- There is no way to specify what audio interface plays the audio clip.
+This is a proof-of-concept implementation is not intented be put into production, so it has several potential issues that are not addressed:
+
+- There is no way to specify what audio interface plays the audio clip within the code: that happens at the operating system level.
+- Linux may change the ID of desired output audio interface.
 - If the midi device is disconnected while the app is running, the application has no way of reconnecting when the device is plugged back in.
+- The MIDI device name that the `mido` library sees may change between system boots.
 - If the midi device is disconnected when `systemd` starts the app, the service will go into a rapid boot loop.
 - Multiple midi channels on the same interface will all be collapsed into a single stream of notes.
 - The current implementation only supports listening on one device.
 - The Python `playsound` library requires an enormous number of dependencies on a headless Pi. It may be worth replacing with `pygame` as outlined in [Jeff Geerling's article](https://www.jeffgeerling.com/blog/2022/playing-sounds-python-on-raspberry-pi).
+- Even though the main thread is blocked while the audio is playing, the midi device is continuing to collect input that will execute immediately after the audio stops. If the melody is played during the audio playback, the audio playback will start again immediately after the playing audio stops.
+
+All of these issues are fixable, but are not worth expanding this demo project's scope to mitigate.
 
 ## Running tests
 
