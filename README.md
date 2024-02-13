@@ -16,10 +16,10 @@ Once the environment is created, activate it:
 source .venv/bin/activate
 ```
 
-Once activated, install the dependencies:
+Once activated, install the dependencies. If there are errors during this step, check the [resolving dependency conflicts](#resolving-dependency-conflicts) section below.
 
 ```sh
-pip3 install -r requirements.txt
+pip install -r requirements/development.txt -r requirements/production.txt
 ```
 
 Next create a project `.env` file:
@@ -98,6 +98,13 @@ cd ~
 git clone git@github.com:tylerlwsmith/pi-in-the-end.git
 ```
 
+Once cloned, change into the directory and install the production dependencies. Because this is the only Python application the Pi will be running, we will opt to install the dependencies globally.
+
+```sh
+cd pi-in-the-end
+pip install requirements/production.txt
+```
+
 **If you are not using the default audio driver for output, follow [Jeff Geerling's instructions to set a different audio device](https://www.jeffgeerling.com/blog/2022/playing-sounds-python-on-raspberry-pi).**
 
 To adjust the ouptut volume, grab the name of the device you'd like to change the volume of with the following command:
@@ -170,6 +177,37 @@ After installing the project requirements in a virtual environment, use the foll
 ```sh
 pytest
 ```
+
+## Managing dependencies
+
+This repo uses `pip-tools` to manage top-level dependencies and generate the appropriate requirements files. This approach was taken from [pip-tools section of Python Application Dependency Management](https://hynek.me/articles/python-app-deps-2018/#pip-tools--everything-old-is-new-again) by Hynek Schlawack.
+
+To add a dependency, add it to either `development.in` or `production.in` in the `requirements/` directory, then run the following commands:
+
+```sh
+pip-compile -o requirements/production.txt requirements/production.in
+pip-compile -o requirements/development.txt requirements/development.in
+```
+
+**This will add the new dependency, but not upgrade any existing dependencies.** To upgrade existing dependencies to their latest versions, run one of the following commands:
+
+```sh
+# Upgrade all packages.
+pip-compile --upgrade -o requirements/production.txt requirements/production.in
+
+# Upgrade single package.
+pip-compile --upgrade-package mido -o requirements/production.txt requirements/production.in
+```
+
+Once you have made the desired changes to your requirements files, sync the virtual environment:
+
+```sh
+pip-sync requirements/production.txt requirements/development.txt
+```
+
+### Resolving dependency conflicts
+
+Sometimes, the `development` and `production` requirements files can't have the same transitive dependency, but require a different version. In this case, you must manually resolve the dependency conflict and ensure that both `development` and `production` use the sme version of the transitive dependency.
 
 ## Formatting
 

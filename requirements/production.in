@@ -1,0 +1,10 @@
+python-dotenv==1.*
+mido==1.3.*
+
+# playsound no longer correctly installs from the Pip package on MacOS,
+# so we'll install from the GitHub link. We'll also provide the full
+# hash of the last commit to make sure we're getting the right version.
+#
+# https://github.com/TaylorSMarks/playsound/issues/150
+
+playsound@git+https://github.com/taconi/playsound@9cf4af20caa5ae8586f88b65659681b24f0c4e69
