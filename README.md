@@ -73,19 +73,7 @@ The audio file is not provided as a part of this repository, so you'll need to p
 
 ## Deploy to Pi
 
-On the Pi, install the system-level dependencies for the [PyGObject](https://pygobject.readthedocs.io/en/latest/index.html) package:
-
-```sh
-sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-4.0
-```
-
-Then install the dependencies for [GStreamer](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c).
-
-```sh
-sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
-```
-
-Next, install Git:
+Install Git:
 
 ```sh
 sudo apt install git
