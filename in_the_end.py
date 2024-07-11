@@ -2,11 +2,12 @@ import os
 
 import dotenv
 import mido
-from playsound import playsound
+import pygame
 
 from note_util import to_number
 
 dotenv.load_dotenv()
+pygame.mixer.init()
 
 # fmt: off
 melody_note_names = (
@@ -21,16 +22,23 @@ audio_file = os.getenv("AUDIO_FILE") or "placeholder.mp3"
 project_directory = os.path.dirname(os.path.realpath(__file__))
 audio_file_path = os.path.join(project_directory, audio_file)
 
-# A `None` value will select the default audio interface.
-audio_interface = os.getenv("AUDIO_INTERFACE") or None
+sound = pygame.mixer.Sound(audio_file_path)
+channel = pygame.mixer.Channel(1)
+
+# `None` will select the default audio interface.
+audio_interface = os.getenv("AUDIO_INTERFACE", None)
 input_port = mido.open_input(audio_interface)
 print("Listening for input ...")
 
 try:
-    for msg in input_port:
-        if msg.type == "note_on" and msg.velocity > 0:
-            # Append, disregarding octaves. C is 0, C# is 1, etc.
-            entered_notes.append(msg.note % 12)
+    for message in input_port:
+        if channel.get_busy():
+            continue
+
+        if message.type == "note_on" and message.velocity > 0:
+            # Disregarding octaves. C is 0, C# is 1, etc.
+            current_note = message.note % 12
+            entered_notes.append(current_note)
 
             # Only keep around enough notes to see if it matches.
             while len(entered_notes) > len(melody):
@@ -42,7 +50,7 @@ try:
                 print("🎶 I tried so hard, and got so far 🎶")
 
                 if os.path.isfile(audio_file_path):
-                    playsound(audio_file_path, block=True)
+                    channel = sound.play()
 
 except KeyboardInterrupt:
     print("\nShutting down ...")

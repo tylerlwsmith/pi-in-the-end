@@ -165,8 +165,6 @@ This is a proof-of-concept implementation is not intented be put into production
 - If the midi device is disconnected when `systemd` starts the app, the service will go into a rapid boot loop.
 - Multiple midi channels on the same interface will all be collapsed into a single stream of notes.
 - The current implementation only supports listening on one device.
-- The Python `playsound` library requires an enormous number of dependencies on a headless Pi. It may be worth replacing with `pygame` as outlined in [Jeff Geerling's article](https://www.jeffgeerling.com/blog/2022/playing-sounds-python-on-raspberry-pi).
-- Even though the main thread is blocked while the audio is playing, the midi device is continuing to collect input that will execute immediately after the audio stops. If the melody is played during the audio playback, the audio playback will start again immediately after the playing audio stops.
 
 All of these issues are fixable, but are not worth expanding this demo project's scope to mitigate.
 
