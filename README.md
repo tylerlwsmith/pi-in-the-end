@@ -25,7 +25,7 @@ pip install -r requirements/development.txt -r requirements/production.txt
 Next create a project `.env` file:
 
 ```sh
-cp .example.env .env
+cp .env.example .env
 ```
 
 ## Set the midi interface
