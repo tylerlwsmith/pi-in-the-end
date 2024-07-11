@@ -54,3 +54,6 @@ try:
 
 except KeyboardInterrupt:
     print("\nShutting down ...")
+    input_port.close()
+    channel.stop()
+    pygame.mixer.quit()
