@@ -193,7 +193,7 @@ pip-sync requirements/production.txt requirements/development.txt
 
 ### Resolving dependency conflicts
 
-Sometimes, the `development` and `production` requirements files can't have the same transitive dependency, but require a different version. In this case, you must manually resolve the dependency conflict and ensure that both `development` and `production` use the sme version of the transitive dependency.
+Sometimes, the `development` and `production` requirements files can't have the same transitive dependency, but require a different version. In this case, you must manually resolve the dependency conflict and ensure that both `development` and `production` use the same version of the transitive dependency.
 
 ## Formatting
 
