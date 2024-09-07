@@ -71,6 +71,8 @@ AUDIO_INTERFACE="Scarlett 18i8 USB:Scarlett 18i8 USB MIDI 1 20:0"
 
 The audio file is not provided as a part of this repository, so you'll need to provide your own. Save the file into the main project directory, then set its value in `.env` using the `AUDIO_FILE` variable.
 
+To extract stems from an audio file, you can use [Spleeter](https://github.com/deezer/spleeter).
+
 ## Deploy to Pi
 
 Install Git:
