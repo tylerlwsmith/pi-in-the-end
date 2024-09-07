@@ -127,7 +127,7 @@ Type=simple
 WorkingDirectory=/home/<username>/pi-in-the-end
 User=<username>
 Restart=always
-ExecStart=/home/<username>/pi-in-the-end/.venv/bin/python /home/<username>/pi-in-the-end/in_the_end.py
+ExecStart=/home/<username>/pi-in-the-end/in_the_end.py
 
 [Install]
 WantedBy=multi-user.target
