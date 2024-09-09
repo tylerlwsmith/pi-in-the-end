@@ -71,19 +71,21 @@ AUDIO_INTERFACE="Scarlett 18i8 USB:Scarlett 18i8 USB MIDI 1 20:0"
 
 The audio file is not provided as a part of this repository, so you'll need to provide your own. Save the file into the main project directory, then set its value in `.env` using the `AUDIO_FILE` variable.
 
+To extract stems from an audio file, you can use [Spleeter](https://github.com/deezer/spleeter).
+
 ## Deploy to Pi
 
 Install Git:
 
 ```sh
-sudo apt install git
+sudo apt install git -y
 ```
 
 After that, run the following commands to clone the repo into the home directory:
 
 ```sh
 cd ~
-git clone git@github.com:tylerlwsmith/pi-in-the-end.git
+git clone https://github.com/tylerlwsmith/pi-in-the-end.git
 ```
 
 Once cloned, change into the directory and install the production dependencies. Because this is the only Python application the Pi will be running, we will opt to install the dependencies globally.
@@ -107,13 +109,25 @@ It may return something like `Simple mixer control 'PCM',0`. You can target the 
 amixer set PCM 100% # 100% means full volume.
 ```
 
+Alternatively, you can user `alsamixer` and edit the volume through the TUI:
+
+```sh
+alsamixer
+```
+
+To set the default audio device, you can use `raspi-config`:
+
+```sh
+sudo raspi-config
+```
+
 Next create, a `systemd` unit file by running the following command:
 
 ```sh
 sudo vi /etc/systemd/system/linkinpark.service
 ```
 
-Paste the following into the new `linkinpark.service` file, **replace `<username>` with the desired user**, and save and quit with `wq!`:
+Paste the following into the new `linkinpark.service` file, **replace `<username>` with the desired user** by running `:%s/<username>/username/g`, and save and quit with `wq!`:
 
 ```ini
 [Unit]
