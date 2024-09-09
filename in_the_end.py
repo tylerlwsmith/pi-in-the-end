@@ -26,7 +26,7 @@ sound = pygame.mixer.Sound(audio_file_path)
 channel = pygame.mixer.Channel(1)
 
 # `None` will select the default audio interface.
-audio_interface = os.getenv("AUDIO_INTERFACE", None)
+audio_interface = os.getenv("AUDIO_INTERFACE") or None
 input_port = mido.open_input(audio_interface)
 print("Listening for input ...")
 
