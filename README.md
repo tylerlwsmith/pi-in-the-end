@@ -1,6 +1,10 @@
 # "In the End" player for Raspberry Pi
 
-This project will run on a Raspberry Pi and will play the chorus from "In the End" by Linkin Park (mp3 not included) when the song's intro is played on a connected MIDI device. You can see me demoing an early version of the script on [my Twitter](https://twitter.com/tylerlwsmith/status/1327802206020464640). The demo prints to the console, but this completed project plays the chorus through connected speakers.
+This project will run on a Raspberry Pi and will play the chorus from "In the End" by Linkin Park (mp3 not included) when the song's intro is played on a connected MIDI device. In 2020, I demoed a version of the project on [my Twitter](https://twitter.com/tylerlwsmith/status/1327802206020464640) that printed to the console, then I later created a full-featured version.
+
+You can watch a demo of the project in the YouTube video below.
+
+[![YouTube video](https://img.youtube.com/vi/PRO-vQtjnbw/0.jpg)](https://www.youtube.com/watch?v=PRO-vQtjnbw)
 
 ## Installation
 
